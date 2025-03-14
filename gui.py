@@ -1,6 +1,13 @@
+import os 
+
+if not os.path.exists("todos.txt"):
+    with open("todos.txt","w") as file:
+        pass
+
 import functions 
 import FreeSimpleGUI as sg 
 import time
+
 
 sg.theme("DarkGrey15")
 
@@ -35,7 +42,7 @@ while True:
         case "Edit":
             try:
                 todo_to_edit = values['todos'][0]    
-                new_todo = values['todo'] 
+                new_todo = values['todo'].strip() + "\n" 
 
                 todos = functions.get_todos()
                 index = todos.index(todo_to_edit)
